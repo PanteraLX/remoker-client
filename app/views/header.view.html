@@ -4,10 +4,13 @@
             <div class="text-center well" ng-controller="HeaderCtrl">
                 <h1>Remoker</h1>
                 <ol class="breadcrumb">
-                    <li ng-hide="hideSessionName ">Room: <b>room</b></li>
-                    <li ng-hide="hideSessionId">Room ID: <b>id</b></li>
-                    <li ng-hide="hideTaskName">Story: <b>story</b></li>
+                    <li ng-hide="hideRoomName ">Room: <b>{{ roomNameBreadcrumb }}</b></li>
+                    <li ng-hide="hideRoomId">Room ID: <b>{{ roomIdBreadcrumb }}</b></li>
+                    <li ng-hide="hideStoryName">Story: <b>{{ storyNameBreadcrumb }}</b></li>
                 </ol>
+                <div class="alert alert-danger" role="alert" ng-show="connectionError">
+                    {{ connectionErrorMessage }}
+                </div>
             </div>
         </div>
     </div>

@@ -7,4 +7,4 @@
  * # room
  * Value in remoker.
  */
-angular.module('ipaApp').value('room', {});
+angular.module('remoker').value('room', {});

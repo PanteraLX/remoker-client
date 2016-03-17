@@ -28,9 +28,12 @@
                                        placeholder="story name" ng-model="storyName">
                             </div>
                         </div>
+                        <div class="alert alert-danger" role="alert" ng-show="creationError">
+                            {{ creationErrorMessage }}
+                        </div>
                         <div class="form-group">
                             <div class="col-sm-12 text-center">
-                                <button type="submit" class="btn btn-info">
+                                <button type="submit" class="btn btn-info" ng-click="createStory()">
                                     Create story
                                 </button>
                             </div>

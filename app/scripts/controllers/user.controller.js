@@ -7,5 +7,36 @@
  * # UserCtrl
  * Controller of remoker
  */
-angular.module('remoker').controller('UserCtrl', function () {
-});
+angular.module('remoker')
+    .controller('UserCtrl', function($scope, $cookies, $wamp, $location, user, rpc) {
+
+        /**
+         * Calls the createUserAction in the backend server.
+         *
+         * If no userName is set, the user will be called John Doe from now on.
+         *
+         * This is the first time in this application a remote procedure is called.
+         * The structuring of all following RP calls is quite the same.
+         */
+        $scope.createUser = function() {
+            user.name = typeof $scope.userName === 'undefined' ? 'John Doe' : $scope.userName;
+            $wamp.getWampSession().call(rpc.createUser, JSON.stringify(user))
+                .then(
+                    // Is called when the promise is fullfilled
+                    function(response) {
+                        Object.assign(user, JSON.parse(response[0]));
+                        $cookies.put('user', user.short_id);
+
+                        $location.path('/room');
+                        $scope.$apply();
+                    },
+                    // Is called when the backend has thrown an exception
+                    function(exception) {
+                        $scope.creationError = true;
+                        $scope.creationErrorMessage = exception.desc;
+                        $scope.$apply();
+                        console.log(exception);
+                    }
+                );
+        }
+    });
