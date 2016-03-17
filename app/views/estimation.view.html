@@ -1,1 +1,45 @@
-<p>This is the estimation view.</p>
+<div class="section background-color body">
+    <div ng-include="'views/header.view.html'"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center well">
+                    <p class="text-center">Here you can choose your estimation.</p>
+                    <h3 class="text-center">Estimation</h3>
+                    <form>
+                        <div class="form-group">
+                            <div class="btn-group" data-toggle="buttons">
+                                <div class="row">
+                                    <div class="radio">
+                                        <label class="checkbox-inline">
+                                            <input type="radio" name="valueRadios"
+                                                   class="btn btn-info" ng-model="sheet.schema" autocomplete="off"
+                                                   value="1"
+                                            >
+                                            1
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="radio">
+                                        <label class="checkbox-inline">
+                                            <input type="radio" name="valueRadios"
+                                                   class="btn btn-info" ng-model="sheet.schema" autocomplete="off"
+                                                   value="2"
+                                            >
+                                            2
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <button class="btn btn-info" data-toggle="button" type="submit">
+                            Submit estimation
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

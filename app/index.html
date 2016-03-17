@@ -13,22 +13,27 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
+    <link rel="stylesheet" href="styles/pingendo.style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+      <!-- endbuild -->
   </head>
-  <body ng-app="remoker">
+  <body ng-app="remoker" class="background-color body">
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="container">
-    <div ng-view=""></div>
+    <div id="wrap">
+        <!-- Begin page content -->
+        <div class="container">
+            <div ng-view=""></div>
+        </div>
+        <div id="push"></div>
     </div>
 
-    <div class="footer">
-      <div class="container">
-      </div>
-    </div>
-
+    <footer id="footer" class="section section-info text-left">
+      <div ng-include="'views/footer.view.html'"></div>
+    </footer>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>

@@ -50,6 +50,6 @@ angular
                 controllerAs: 'result'
             })
             .otherwise({
-                redirectTo: '/room'
+                redirectTo: '/user'
             });
     });
