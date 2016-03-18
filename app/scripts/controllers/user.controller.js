@@ -8,7 +8,16 @@
  * Controller of remoker
  */
 angular.module('remoker')
-    .controller('UserCtrl', function($scope, $cookies, $wamp, $location, user, rpc) {
+    .controller('UserCtrl', function($scope, $cookies, $wamp, $location, user, rpc, parameters) {
+
+        /**
+         * Fetches all the necessary parameters for the RP-call
+         */
+        var getParameters = function() {
+            var parameters = {};
+            parameters.user = user;
+            return JSON.stringify(parameters);
+        };
 
         /**
          * Calls the createUserAction in the backend server.
@@ -19,8 +28,8 @@ angular.module('remoker')
          * The structuring of all following RP calls is quite the same.
          */
         $scope.createUser = function() {
-            user.name = typeof $scope.userName === 'undefined' ? 'John Doe' : $scope.userName;
-            $wamp.getWampSession().call(rpc.createUser, JSON.stringify(user))
+            user.name = typeof $scope.userName === 'undefined' || $scope.userName === '' ? 'John Doe' : $scope.userName;
+            $wamp.getWampSession().call(rpc.createUser, getParameters())
                 .then(
                     // Is called when the promise is fullfilled
                     function(response) {

@@ -52,6 +52,9 @@
                                        placeholder="room identifier">
                             </div>
                         </div>
+                        <div class="alert alert-danger" role="alert" ng-show="joinError">
+                            {{ joinErrorMessage }}
+                        </div>
                         <button type="submit" class="btn btn-info" ng-click="getRoom()">Join room</button>
                     </form>
                 </div>
