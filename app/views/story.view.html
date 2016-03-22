@@ -6,26 +6,22 @@
                 <div class="text-center well">
                     <h3 class="text-center">{{ 'create_story_heading' | translate }}</h3>
                     <p class="text-center">{{ 'create_story_desc' | translate }}</p>
-                    <form class="form-horizontal text-center" role="form">
-                        <div class="form-group">
-                            <div class="col-sm-2">
-                                <label for="storyName" class="control-label">{{ 'story_name' | translate }}</label>
-                            </div>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="storyName"
-                                       placeholder="{{ 'name_spec' | translate }}" ng-model="storyName">
+                    <form role="form">
+                        <div class="form-group row">
+                            <label for="storyName" class="control-label">{{ 'story_name' | translate }}</label>
+                            <div class="col-sm-12">
+                                <div class="col-sm-10 col-sm-offset-1">
+                                    <input type="text" class="form-control" id="storyName"
+                                           placeholder="{{ 'name_spec' | translate }}" ng-model="storyName">
+                                </div>
                             </div>
                         </div>
                         <div class="alert alert-danger" role="alert" ng-show="creationError">
                             {{ creationErrorMessage | translate }}
                         </div>
-                        <div class="form-group">
-                            <div class="col-sm-12 text-center">
-                                <button type="submit" class="btn btn-info" ng-click="createStory()">
-                                    {{ 'create_story_button' | translate }}
-                                </button>
-                            </div>
-                        </div>
+                        <button type="submit" class="btn btn-info" ng-click="createStory()">
+                            {{ 'create_story_button' | translate }}
+                        </button>
                     </form>
                 </div>
             </div>

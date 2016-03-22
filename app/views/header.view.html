@@ -1,14 +1,14 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="text-center well" ng-controller="HeaderCtrl">
+            <div class="well text-center" ng-controller="HeaderCtrl">
                 <h1><a href="#/user">Remoker</a></h1>
-                <ol class="breadcrumb">
+                <ol class="breadcrumb" ng-hide="hideRoomName">
                     <li ng-hide="hideRoomName ">{{ 'room' | translate }}: <b>{{ roomNameBreadcrumb }}</b></li>
                     <li ng-hide="hideRoomId">{{ 'room_id' | translate }}: <b>{{ roomIdBreadcrumb }}</b></li>
                     <li ng-hide="hideStoryName">{{ 'story' | translate }}: <b>{{ storyNameBreadcrumb }}</b></li>
                 </ol>
-                <ol class="breadcrumb" ng-hide="hideRoomName ">
+                <ol class="breadcrumb" ng-hide="hideRoomName">
                     <li>url: <b>{{ roomUrl }}</b></li>
                 </ol>
                 <div class="alert alert-danger" role="alert" ng-show="connectionError">

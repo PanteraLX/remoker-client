@@ -117,7 +117,7 @@ angular
             'create_estimation_heading': 'Neue Schätzung abgeben',
             'create_estimation_desc': 'Hier können Sie den gewünschten Schätzwert auswählen.',
             'join_room_heading': 'Bestehendem Raum beitreten',
-            'join_room_desc': 'Wenn sie ein reguläres Mitglied Ihres Scrum_teams sind und Ihr Scrum-Master bereits einen Schätzraum erstellt hat, können Sie hier mit Hilfe der ID des Raumes teilnehmen.',
+            'join_room_desc': 'Wenn sie ein reguläres Mitglied Ihres Scrum-Teams sind und Ihr Scrum-Master bereits einen Schätzraum erstellt hat, können Sie hier mit Hilfe der ID des Raumes teilnehmen.',
             'create_user_button': 'Benutzer erstellen',
             'create_room_button': 'Raum erstellen',
             'create_story_button': 'Story erstellen',
