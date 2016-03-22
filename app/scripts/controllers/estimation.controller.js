@@ -8,20 +8,10 @@
  * Controller of remoker
  */
 angular.module('remoker')
-    .controller('EstimationCtrl', function($scope, $wamp, rpc, schema, user, room, story, estimation) {
+    .controller('EstimationCtrl', function($scope, $wamp, $location, rpc, schema, user, room, story, estimation, parameters, onResolution) {
 
         $scope.cardSet = schema.getCardset(room.schema);
-
         $scope.estimation = {};
-
-        var getParameters = function() {
-            var parameters = {};
-            parameters.estimation = estimation;
-            parameters.user = user;
-            parameters.story = story;
-            parameters.room = room;
-            return JSON.stringify(parameters);
-        };
 
         var showException = function(exception) {
             $scope.creationErrorMessage = exception.desc;
@@ -35,24 +25,26 @@ angular.module('remoker')
          */
         $scope.createEstimation = function() {
             estimation.value = $scope.estimation.value;
-            $wamp.getWampSession().call(rpc.createEstimation, getParameters())
+            $wamp.getWampSession().call(rpc.createEstimation, parameters.getParameters())
                 .then(
                     function(response) {
                         Object.assign(estimation, JSON.parse(response[0]));
-                        return $wamp.getWampSession().call(rpc.getStory, getParameters())
+                        $wamp.publish({estimation: estimation});
+                        return $wamp.getWampSession().call(rpc.getStory, parameters.getParameters());
                     },
                     function(exception) {
-                        showException(exception)
+                        console.log(exception);
+                        showException(exception);
                     }
                 )
                 .then(
                     function(response) {
                         Object.assign(story, JSON.parse(response[0]));
                         $location.path('/overview');
-                        $scope.$apply()
+                        $scope.$apply();
                     },
                     function(exception) {
-                        showException(exception)
+                        showException(exception);
                     }
                 );
         };

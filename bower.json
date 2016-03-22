@@ -10,11 +10,13 @@
     "angular-route": "^1.4.0",
     "angular-sanitize": "^1.4.0",
     "angular-touch": "^1.4.0",
+    "angular-translate": "^2.10.0",
     "angular-wamp": "~0.1.8",
     "gos-websocket-client": ""
   },
   "devDependencies": {
-    "angular-mocks": "^1.4.0"
+    "angular-mocks": "^1.4.0",
+    "angular-translate-loader-partial": "^2.10.0"
   },
   "appPath": "app",
   "moduleName": "ipaApp",

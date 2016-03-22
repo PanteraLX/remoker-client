@@ -8,7 +8,7 @@
  * Controller of remoker
  */
 angular.module('remoker')
-    .controller('RoomCtrl', function($scope, $cookies, $wamp, $location, user, room, rpc, schema) {
+    .controller('RoomCtrl', function($scope, $cookies, $wamp, $location, user, room, rpc, schema, parameters, join) {
 
         /**
          * Loads all possible schema variations out of the schema service
@@ -16,22 +16,12 @@ angular.module('remoker')
         $scope.schemas = schema.getSchemas();
 
         /**
-         * Fetches all the necessary parameters for the RP-call
-         */
-        var getParameters = function() {
-            var parameters = {};
-            parameters.user = user;
-            parameters.room = room;
-            return JSON.stringify(parameters);
-        };
-
-        /**
          *
          *
          * @param schema
          */
         $scope.setSchema = function(schema) {
-            room.schema = schema
+            room.schema = schema;
         };
 
         /**
@@ -39,14 +29,13 @@ angular.module('remoker')
          */
         $scope.createRoom = function() {
             room.name = $scope.roomName;
-            $wamp.getWampSession().call(rpc.createRoom, getParameters())
+            $wamp.getWampSession().call(rpc.createRoom, parameters.getParameters())
                 .then(
                     function(response) {
                         Object.assign(room, JSON.parse(response[0]));
+                        Object.assign(user, room.master);
                         $cookies.put('room', room.short_id);
-
                         $wamp.subscribe(room.short_id);
-
                         $location.path('/story');
                         $scope.$apply();
                     },
@@ -64,16 +53,13 @@ angular.module('remoker')
          */
         $scope.getRoom = function() {
             room.short_id = $scope.roomId;
-            $wamp.getWampSession().call(rpc.getRoom, getParameters())
+            $wamp.getWampSession().call(rpc.getRoom, parameters.getParameters())
                 .then(
                     function(response) {
                         Object.assign(room, JSON.parse(response[0]));
                         $cookies.put('room', room.short_id);
-
                         $wamp.subscribe(room.short_id);
-
-                        $location.path('/estimation');
-                        $scope.$apply();
+                        join.story()
                     },
                     function(exception) {
                         $scope.joinError = true;

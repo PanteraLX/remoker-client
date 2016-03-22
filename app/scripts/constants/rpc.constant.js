@@ -16,6 +16,8 @@ angular.module('remoker').constant('rpc', {
 
     createStory: "storyRPC/create_story_action",
     getStory: "storyRPC/get_story_action",
+    setResult: "storyRPC/set_result_action",
+    deleteEstimations: "storyRPC/delete_estimations_action",
 
     createEstimation: "estimationRPC/create_estimation_action",
     getEstimation: "estimationRPC/get_estimation_action"

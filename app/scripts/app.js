@@ -15,7 +15,8 @@ angular
         'ngResource',
         'ngRoute',
         'ngSanitize',
-        'ngTouch'
+        'ngTouch',
+        'pascalprecht.translate'
     ])
     .config(function($routeProvider) {
         $routeProvider
@@ -78,4 +79,19 @@ angular
             $rootScope.$apply();
             console.log($rootScope.connectionErrorMessage);
         })
-});
+    }).config(['$translateProvider', function($translateProvider) {
+            $translateProvider.useLoader('$translatePartialLoader', {
+                urlTemplate: '/assets/translation/{lang}/{part}.json'
+            });
+        $translateProvider.translations('en', {
+            'TITLE': 'Hello',
+            'FOO': 'This is a paragraph'
+        });
+
+        $translateProvider.translations('de', {
+            'TITLE': 'Hallo',
+            'FOO': 'Dies ist ein Absatz'
+        });
+
+        $translateProvider.preferredLanguage('de');
+    }]);

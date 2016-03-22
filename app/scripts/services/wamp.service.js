@@ -8,7 +8,7 @@
  * Service in remoker.
  */
 angular.module('remoker')
-    .service('$wamp', function() {
+    .service('$wamp', function($rootScope, $location, story, room, rpc, parameters) {
 
         var wampSession;
 
@@ -33,8 +33,27 @@ angular.module('remoker')
          */
         this.subscribe = function(shortId) {
             wampSession.subscribe("remoker/" + shortId, function(uri, payload) {
-                console.log(payload);
+                handlePublish(payload);
             });
+        };
+
+        /**
+         * Subscribes to a channel
+         */
+        this.publish = function(message) {
+            wampSession.publish("remoker/" + room.short_id, message);
+        };
+
+        var handlePublish = function(payload) {
+            if (typeof payload.story !== 'undefined') {
+                $rootScope.$broadcast('newStory', payload.story);
+            } else if (typeof payload.estimation !== 'undefined') {
+                $rootScope.$broadcast('newEstimation', payload.estimation);
+            } else if (payload.resolution) {
+                $rootScope.$broadcast('resolution');
+            } else if (payload.reestimation) {
+                $rootScope.$broadcast('reestimation');
+            }
         };
 
     });

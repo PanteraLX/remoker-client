@@ -11,7 +11,7 @@ angular.module('remoker')
     .service('schema', function(fibonacci, shirt, cup) {
 
         this.getSchemas = function() {
-            return ['fibonacci', 'shirt', 'cup']
+            return ['fibonacci', 'shirt', 'cup'];
         };
 
         this.getCardset = function(sizingStrategy) {
@@ -23,7 +23,7 @@ angular.module('remoker')
                 cardSet[row] = rowArray;
                 if(key % 3 === 2) {
                     rowArray = [];
-                    row++
+                    row++;
                 }
             });
             return cardSet;
