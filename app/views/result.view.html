@@ -5,9 +5,9 @@
             <div class="col-md-12">
                 <div class="text-center well">
                     <p class="text-center"></p>
-                    <h3 class="text-center">Result</h3>
+                    <h3 class="text-center">{{ 'result' | translate }}</h3>
                     <div class="btn btn-info"><h1>{{ storyPoints }}</h1></div>
-                    <h3 class="text-center">Developer Overview</h3>
+                    <h3 class="text-center">{{ 'overview' | translate }}</h3>
                     <br/>
                     <table class="table table-striped">
                         <tbody>
@@ -23,14 +23,18 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Developer name</th>
-                            <th>Estimation</th>
-                            <th>Estimation time</th>
+                            <th>{{ 'developer_name' | translate }}</th>
+                            <th>{{ 'estimation_value' | translate }}</th>
+                            <th>{{ 'estimation_time' | translate }}</th>
                         </tr>
                         </thead>
                     </table>
-                    <a class="btn btn-info" ng-show="isMaster" data-toggle="button" ng-click="reEstimate()">reestimate</a>
-                    <a class="btn btn-info" ng-show="isMaster" data-toggle="button" ng-click="newStory()">new story</a>
+                    <a class="btn btn-info" ng-show="isMaster" data-toggle="button" ng-click="reEstimate()">
+                        {{ 'reestimate' | translate }}
+                    </a>
+                    <a class="btn btn-info" ng-show="isMaster" data-toggle="button" ng-click="newStory()">
+                        {{ 'new_story' | translate }}
+                    </a>
                 </div>
             </div>
         </div>

@@ -4,21 +4,22 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="text-center well">
-                    <p class="text-center">Remoker is the easy way for teams to accurately estimate Agile projects</p>
-                    <h3 class="text-center">Create new room</h3>
+                    <h3 class="text-center">{{ 'create_room_heading' | translate }}</h3>
+                    <p class="text-center">{{ 'create_room_desc' | translate }}</p>
                     <form class="form-horizontal text-center" role="form">
                         <div class="form-group">
                             <div class="col-sm-2">
-                                <label for="roomName" class="control-label">Room name</label>
+                                <label for="roomName" class="control-label">{{ 'room_name' | translate }}</label>
                             </div>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="roomName" ng-model="roomName"
-                                       placeholder="room name" required>
+                                       placeholder="{{ 'name_spec' | translate }}" required>
                             </div>
                         </div>
+                        <p class="text-center">{{ 'create_room_schema_desc' | translate }}</p>
                         <div class="form-group">
                             <div class="col-sm-2">
-                                <label for="storyName" class="control-label">Estimation schema</label>
+                                <label for="storyName" class="control-label">{{ 'estimation_schema' | translate }}</label>
                             </div>
                             <div class="col-sm-10">
                                 <div class="btn-group" data-toggle="buttons">
@@ -33,29 +34,31 @@
                             </div>
                         </div>
                         <div class="alert alert-danger" role="alert" ng-show="creationError">
-                            {{ creationErrorMessage }}
+                            {{ creationErrorMessage | translate }}
                         </div>
                         <div class="form-group">
                             <div class=" col-sm-12">
-                                <button type="submit" class="btn btn-info" ng-click="createRoom()">Create room</button>
+                                <button type="submit" class="btn btn-info" ng-click="createRoom()">{{ 'create_room_button' | translate }}</button>
                             </div>
                         </div>
                     </form>
-                    <h3 class="text-center">Join existing room</h3>
+                    <hr>
+                    <h3 class="text-center">{{ 'join_room_heading' | translate }}</h3>
+                    <p class="text-center">{{ 'join_room_desc' | translate }}</p>
                     <form class="form-horizontal" role="form">
                         <div class="form-group">
                             <div class="col-sm-2">
-                                <label for="roomId" class="control-label">Room Identifier</label>
+                                <label for="roomId" class="control-label">{{ 'room_id' | translate }}</label>
                             </div>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="roomId" ng-model="roomId"
-                                       placeholder="room identifier">
+                                       placeholder="{{ 'id_spec' | translate }}">
                             </div>
                         </div>
                         <div class="alert alert-danger" role="alert" ng-show="joinError">
-                            {{ joinErrorMessage }}
+                            {{ joinErrorMessage | translate }}
                         </div>
-                        <button type="submit" class="btn btn-info" ng-click="getRoom()">Join room</button>
+                        <button type="submit" class="btn btn-info" ng-click="getRoom()">{{ 'join_room_button' | translate }}</button>
                     </form>
                 </div>
             </div>

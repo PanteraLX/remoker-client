@@ -44,6 +44,10 @@ angular.module('remoker')
             wampSession.publish("remoker/" + room.short_id, message);
         };
 
+        /**
+         *
+         * @param payload
+         */
         var handlePublish = function(payload) {
             if (typeof payload.story !== 'undefined') {
                 $rootScope.$broadcast('newStory', payload.story);

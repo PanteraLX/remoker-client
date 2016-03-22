@@ -4,37 +4,25 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="text-center well">
-                    <h3 class="text-center">Room info</h3>
-                    <form class="form-horizontal" role="form">
-                        <div class="form-group">
-                            <div class="col-sm-2">
-                                <label for="url" class="control-label">Room URL</label>
-                            </div>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="url" value="http://www.test.ch" readonly>
-                            </div>
-                        </div>
-                    </form>
-                    <h3 class="text-center">Create new story</h3>
-                    <p class="text-center">Here you can define the name of the next story you want to estimate. The
-                        name can be the identifier of the story out of Jira, Redmine etc.</p>
+                    <h3 class="text-center">{{ 'create_story_heading' | translate }}</h3>
+                    <p class="text-center">{{ 'create_story_desc' | translate }}</p>
                     <form class="form-horizontal text-center" role="form">
                         <div class="form-group">
                             <div class="col-sm-2">
-                                <label for="storyName" class="control-label">Story name</label>
+                                <label for="storyName" class="control-label">{{ 'story_name' | translate }}</label>
                             </div>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="storyName"
-                                       placeholder="story name" ng-model="storyName">
+                                       placeholder="{{ 'name_spec' | translate }}" ng-model="storyName">
                             </div>
                         </div>
                         <div class="alert alert-danger" role="alert" ng-show="creationError">
-                            {{ creationErrorMessage }}
+                            {{ creationErrorMessage | translate }}
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12 text-center">
                                 <button type="submit" class="btn btn-info" ng-click="createStory()">
-                                    Create story
+                                    {{ 'create_story_button' | translate }}
                                 </button>
                             </div>
                         </div>

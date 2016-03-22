@@ -8,7 +8,7 @@
  * Service in remoker
  */
 angular.module('remoker')
-    .service('join', function($rootScope, $location, $wamp, user, room, story, estimation, onNewStory) {
+    .service('join', function($rootScope, $location, $wamp, rpc, user, room, story, estimation, parameters, onNewStory) {
 
         this.story = function() {
             if(0 === room.stories.length) {
@@ -23,4 +23,19 @@ angular.module('remoker')
                 $rootScope.$apply();
             }
         };
+
+        this.room = function() {
+            $wamp.getWampSession().call(rpc.getRoom, parameters.getParameters())
+                .then(
+                    function(response) {
+                        Object.assign(room, JSON.parse(response[0]));
+                    },
+                    function(exception) {
+                        console.log(exception);
+                        $scope.creationErrorMessage = exception.desc;
+                        $scope.creationError = true;
+                        $scope.$apply();
+                    }
+                );
+        }
     });

@@ -6,9 +6,9 @@
                 <div class="text-center well">
                     <p class="text-center">On this page all, developers are shown which have already send an estimation
                         for the story.</p>
-                    <h3 class="text-center">Story</h3>
+                    <h3 class="text-center">{{ 'story' | translate }}</h3>
                     <p class="text-center">{{ storyName }}</p>
-                    <h3 class="text-center">Developer Overview</h3>
+                    <h3 class="text-center">{{ 'overview' | translate }}</h3>
                     <table class="table table-striped">
                         <tbody>
                         <tr ng-repeat="(key, estimation) in estimations">
@@ -20,12 +20,14 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Developer name</th>
-                            <th>Estimation time</th>
+                            <th>{{ 'developer_name' | translate }}</th>
+                            <th>{{ 'estimation_time' | translate }}</th>
                         </tr>
                         </thead>
                     </table>
-                    <a ng-show="isMaster" class="btn btn-info" data-toggle="button" ng-click="resolveStory()">Resolve Story</a>
+                    <a ng-show="isMaster" class="btn btn-info" data-toggle="button" ng-click="resolveStory()">
+                        {{ 'resolve_story_button' | translate }}
+                    </a>
                 </div>
             </div>
         </div>

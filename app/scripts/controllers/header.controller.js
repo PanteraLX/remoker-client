@@ -11,6 +11,7 @@ angular.module('remoker')
     .controller('HeaderCtrl', function($scope, room, story) {
 
         $scope.roomIdBreadcrumb = room.short_id;
+        $scope.roomUrl = window.location.origin + '/#/room/' + room.short_id;
         $scope.hideRoomId = (typeof $scope.roomIdBreadcrumb === 'undefined');
 
         $scope.roomNameBreadcrumb = room.name;

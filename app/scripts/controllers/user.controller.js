@@ -8,7 +8,12 @@
  * Controller of remoker
  */
 angular.module('remoker')
-    .controller('UserCtrl', function($scope, $cookies, $wamp, $location, user, rpc, parameters) {
+    .controller('UserCtrl', function($scope, $cookies, $routeParams, $wamp, $location, user, rpc, room, parameters, join) {
+
+        if(typeof ($routeParams.roomId) !== 'undefined') {
+            room.short_id = $routeParams.roomId;
+            join.room();
+        }
 
         /**
          * Calls the createUserAction in the backend server.
@@ -27,8 +32,13 @@ angular.module('remoker')
                         Object.assign(user, JSON.parse(response[0]));
                         $cookies.put('user', user.short_id);
 
-                        $location.path('/room');
-                        $scope.$apply();
+                        if (typeof room.short_id === 'undefined') {
+                            console.log('test');
+                            $location.path('/room');
+                            $scope.$apply();
+                        } else {
+                            join.story();
+                        }
                     },
                     // Is called when the backend has thrown an exception
                     function(exception) {
@@ -38,5 +48,6 @@ angular.module('remoker')
                         console.log(exception);
                     }
                 );
-        }
+        };
+
     });
