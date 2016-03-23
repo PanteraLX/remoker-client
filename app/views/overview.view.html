@@ -11,17 +11,18 @@
                     <h3 class="text-center">{{ 'overview' | translate }}</h3>
                     <table class="table table-striped">
                         <tbody>
-                        <tr ng-repeat="(key, estimation) in estimations">
+                        <tr ng-repeat="(key, developer) in developers"
+                            ng-class="{'success' : hasEstimation[developer.short_id] === true }">
                             <td>{{ key + 1 }}</td>
-                            <td>{{ estimation.developer.name }}</td>
-                            <td>{{ estimation.created_at.sec * 1000 | date:'dd.MM.yyyy HH:mm' }}</td>
+                            <td>{{ developer.name }}</td>
+                            <td>{{ developer.created_at.sec * 1000 | date:'dd.MM.yyyy HH:mm' }}</td>
                         </tr>
                         </tbody>
                         <thead>
                         <tr>
                             <th>#</th>
                             <th>{{ 'developer_name' | translate }}</th>
-                            <th>{{ 'estimation_time' | translate }}</th>
+                            <th>{{ 'join_time' | translate }}</th>
                         </tr>
                         </thead>
                     </table>

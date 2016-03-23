@@ -8,7 +8,7 @@
  * Controller of remoker
  */
 angular.module('remoker')
-    .controller('ResultCtrl', function ($scope, $location, $wamp, rpc, user, estimation, story, room, parameters, schema, onNewStory, onReestimation) {
+    .controller('ResultCtrl', function ($scope, $location, $wamp, rpc, user, estimation, story, room, parameters, schema, onNewStory, onReestimation, onNewDeveloper) {
 
         $scope.isMaster = user.is_master;
         $scope.estimations = story.estimations;

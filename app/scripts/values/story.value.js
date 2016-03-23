@@ -10,6 +10,7 @@
 angular.module('remoker')
     .value('story', {
         estimations: [],
+        hasEstimation : {},
         getMedian: function(sizingArray) {
 
             var results = [];

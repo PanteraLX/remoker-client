@@ -33,7 +33,6 @@ angular.module('remoker')
                         $cookies.put('user', user.short_id);
 
                         if (typeof room.short_id === 'undefined') {
-                            console.log('test');
                             $location.path('/room');
                             $scope.$apply();
                         } else {

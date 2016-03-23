@@ -53,6 +53,10 @@ angular.module('remoker')
                 $rootScope.$broadcast('newStory', payload.story);
             } else if (typeof payload.estimation !== 'undefined') {
                 $rootScope.$broadcast('newEstimation', payload.estimation);
+            } else if (typeof payload.user !== 'undefined') {
+                    $rootScope.$broadcast('newDeveloper', payload.user);
+            } else if (typeof payload.hasEstimation !== 'undefined') {
+                $rootScope.$broadcast('hasEstimation', payload.hasEstimation);
             } else if (payload.resolution) {
                 $rootScope.$broadcast('resolution');
             } else if (payload.reestimation) {

@@ -59,6 +59,7 @@ angular.module('remoker')
                         Object.assign(room, JSON.parse(response[0]));
                         $cookies.put('room', room.short_id);
                         $wamp.subscribe(room.short_id);
+                        $wamp.publish({user: user});
                         join.story()
                     },
                     function(exception) {

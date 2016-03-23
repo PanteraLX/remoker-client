@@ -11,6 +11,7 @@ angular.module('remoker')
     .service('onNewStory', function($rootScope, $location, story, user) {
 
         $rootScope.$on('newStory', function(event, newStory) {
+            story.hasEstimation = {};
             if (user.is_master) {
                 $location.path('/overview');
             } else {

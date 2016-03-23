@@ -29,6 +29,8 @@ angular.module('remoker')
                 .then(
                     function(response) {
                         Object.assign(room, JSON.parse(response[0]));
+                        $wamp.subscribe(room.short_id);
+                        $wamp.publish({user: user});
                     },
                     function(exception) {
                         console.log(exception);

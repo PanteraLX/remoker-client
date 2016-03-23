@@ -12,6 +12,7 @@ angular.module('remoker')
 
         $rootScope.$on('reestimation', function() {
             story.estimations = [];
+            story.hasEstimation = {};
             if (user.is_master) {
                 $location.path('/overview');
             } else {

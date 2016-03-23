@@ -8,7 +8,7 @@
  * Controller of remoker
  */
 angular.module('remoker')
-    .controller('StoryCtrl', function ($scope, $cookies, $wamp, $location, room, story, rpc, parameters) {
+    .controller('StoryCtrl', function ($scope, $cookies, $wamp, $location, room, story, rpc, parameters, onNewDeveloper) {
 
         /**
          * Calls the createStoryAction in the backend server.

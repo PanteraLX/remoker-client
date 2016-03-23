@@ -106,6 +106,7 @@ angular
             'estimation_value': 'Schätzwert',
             'developer_name': 'Entwicklername',
             'estimation_time': 'Geschätzt am',
+            'join_time': 'Beigetreten am',
             'remoker_intro': 'Hier kommt eine ganz awesome Beschriebung von Remoker',
             'create_user_heading': 'Neuen Benutzer erstellen',
             'create_user_desc': 'Bitte geben Sie Ihren gewünschten Benutzernamen an. Wird das Feld nicht ausgefüllt, dann nehmen Sie anonym am Schätzraum teil.',

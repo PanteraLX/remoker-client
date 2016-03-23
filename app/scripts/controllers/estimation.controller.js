@@ -8,7 +8,7 @@
  * Controller of remoker
  */
 angular.module('remoker')
-    .controller('EstimationCtrl', function($scope, $wamp, $location, rpc, schema, user, room, story, estimation, parameters, onResolution) {
+    .controller('EstimationCtrl', function($scope, $wamp, $location, rpc, schema, user, room, story, estimation, parameters, onResolution, onNewDeveloper, onHasEstimation) {
 
         $scope.cardSet = schema.getCardset(room.schema);
         $scope.estimation = {};
