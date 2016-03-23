@@ -11,10 +11,12 @@ angular.module('remoker')
     .service('join', function($rootScope, $location, $wamp, rpc, user, room, story, estimation, parameters, onNewStory) {
 
         this.story = function() {
-            if(0 === room.stories.length) {
-                alert('waiting for estimation');
+            console.log('helloooooo');
+            if (0 === room.stories.length) {
+                angular.element('#storyModal').modal('show');
             } else {
                 Object.assign(story, room.stories[room.stories.length - 1]);
+                story.hasEstimation = {};
                 if((typeof story.result === 'undefined') || (story.result === -1)) {
                     $location.path('/estimation');
                 } else {
@@ -29,8 +31,6 @@ angular.module('remoker')
                 .then(
                     function(response) {
                         Object.assign(room, JSON.parse(response[0]));
-                        $wamp.subscribe(room.short_id);
-                        $wamp.publish({user: user});
                     },
                     function(exception) {
                         console.log(exception);
@@ -39,5 +39,5 @@ angular.module('remoker')
                         $scope.$apply();
                     }
                 );
-        }
+        };
     });

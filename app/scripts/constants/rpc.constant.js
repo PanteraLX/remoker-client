@@ -13,6 +13,7 @@ angular.module('remoker').constant('rpc', {
 
     createRoom: "roomRPC/create_room_action",
     getRoom: "roomRPC/get_room_action",
+    addDeveloper: "roomRPC/add_developer_action",
 
     createStory: "storyRPC/create_story_action",
     getStory: "storyRPC/get_story_action",

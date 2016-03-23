@@ -138,6 +138,8 @@ angular
             'missing_estimationvalue': 'Bitte wählen Sie einen Schätzwert',
             'name_spec': 'max. 20 alphanumerische Zeichen oder [/-]',
             'id_spec': '6 alphanumerische Zeichen',
+            'no_story': 'Keine Story erfasst',
+            'no_story_message': 'Ihr Scrum-Master hat noch keine Story erfasst. Sie werden sofort weitergeleitet, wenn eine neue Story zur Schätzung bereits steht.',
 
         });
 

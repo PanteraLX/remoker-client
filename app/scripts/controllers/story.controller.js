@@ -21,6 +21,7 @@ angular.module('remoker')
                         Object.assign(story, JSON.parse(response[0]));
                         $wamp.publish({story: story});
                         $location.path('/overview');
+                        story.hasEstimation = {};
                         $scope.$apply();
                     },
                     function(exception) {

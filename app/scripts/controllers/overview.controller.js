@@ -14,6 +14,8 @@ angular.module('remoker')
         $scope.estimations = story.estimations;
         $scope.developers = room.developers;
         $scope.storyName = story.name;
+        console.log(story.hasEstimation);
+
         $scope.hasEstimation = story.hasEstimation;
 
         $scope.resolveStory = function() {
@@ -45,7 +47,11 @@ angular.module('remoker')
 
         $scope.$on('newEstimation', function(event, estimation) {
             var short_id = estimation.developer.short_id;
-            var result = $scope.developers.filter(function(e){ return e.short_id === short_id; });
+            var result = $scope.developers.filter(
+                function(e){
+                    return e.short_id === short_id;
+                }
+            );
             $scope.hasEstimation[result[0].short_id] = true;
             $wamp.publish({hasEstimation: $scope.hasEstimation});
             $scope.estimations.push(estimation);

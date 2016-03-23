@@ -1,24 +1,23 @@
 <div class="container" ng-controller="HeaderCtrl">
     <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <h1>Remoker</h1>
+        <a class="navbar-brand" href="#"><b>Remoker</b></a>
 
-            <ol class="breadcrumb text-right" ng-hide="hideRoomName">
-                <li ng-hide="hideInfo">{{ 'room_id' | translate }}: <b>{{ roomId }}</b></li>
-                <li ng-hide="hideInfo">
-                    {{ 'url' | translate }}:
-                    <button class="btn btn-small btn-info" uib-popover="{{ roomUrl }}" popover-title="URL" popover-placement="bottom">
+        <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item" ng-hide="hideInfo">
+                <a class="nav-link" >{{ 'room_id' | translate }}: <b>{{ roomId }}</b></a>
+            </li>
+            <li class="nav-item" ng-hide="hideInfo">
+                <a class="nav-link">{{ 'url' | translate }}:
+                    <b ng-hide="hideInfo" uib-popover="{{ roomUrl }}" popover-title="URL" popover-placement="bottom-right">
                         {{ 'show_url' | translate }}
-                    </button>
-                </li>
-            </ol>
-        </div>
+                    </b>
+                </a>
+            </li>
+        </ul>
     </nav>
-    <br />
     <br />
 
     <div class="alert alert-danger" role="alert" ng-show="connectionError">
         {{ connectionErrorMessage }}
     </div>
-
 </div>

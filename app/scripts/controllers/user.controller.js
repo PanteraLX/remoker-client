@@ -8,7 +8,7 @@
  * Controller of remoker
  */
 angular.module('remoker')
-    .controller('UserCtrl', function($scope, $cookies, $routeParams, $wamp, $location, user, rpc, room, parameters, join) {
+    .controller('UserCtrl', function($scope, $cookies, $routeParams, $wamp, $location, user, rpc, room, parameters, join, add) {
 
         if(typeof ($routeParams.roomId) !== 'undefined') {
             room.short_id = $routeParams.roomId;
@@ -36,7 +36,7 @@ angular.module('remoker')
                             $location.path('/room');
                             $scope.$apply();
                         } else {
-                            join.story();
+                            add.developer();
                         }
                     },
                     // Is called when the backend has thrown an exception

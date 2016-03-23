@@ -109,3 +109,9 @@ ul {
 .well-navbar {
   background-color: #5bc0de !important;
 }
+
+@media (min-width: 768px) {}
+  .navbar-right {
+    float: right !important;
+    margin-right: 0 !important;
+  }
