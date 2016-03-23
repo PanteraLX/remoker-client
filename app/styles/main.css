@@ -43,3 +43,69 @@ td {
     width: 750px !important;
   }
 }
+
+h1 a {
+  text-decoration: none;
+  color:black
+}
+
+h1 a:hover {
+  text-decoration: none;
+  color:black
+}
+
+p a {
+  text-decoration: none;
+  color:white
+}
+
+p a:hover {
+  text-decoration: none;
+  color:white
+}
+
+#toolbarbottom li {
+  display:inline-block;
+  padding:0 10px !important;
+  -webkit-padding-start: 0px !important;
+
+}
+
+#toolbarbottom li img {
+  display:block;
+}
+
+.estimationbutton {
+  background-color: rgb(245, 245, 245);
+  border: 3px solid #5bc0de;
+  border-radius: 50%;
+  margin-top: 10px;
+  color: black;
+  width: 80px;
+  height:80px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.estimationbutton:hover {
+  background-color: rgb(225, 234, 236);
+}
+
+.estimationbutton-active {
+  background-color: rgb(225, 234, 236);
+}
+
+.estimationbutton:focus,.estimationbutton:active {
+  outline: none !important;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.well-navbar {
+  background-color: #5bc0de !important;
+}

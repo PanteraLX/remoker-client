@@ -1,20 +1,24 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="well text-center" ng-controller="HeaderCtrl">
-                <h1><a href="#/user">Remoker</a></h1>
-                <ol class="breadcrumb" ng-hide="hideRoomName">
-                    <li ng-hide="hideRoomName ">{{ 'room' | translate }}: <b>{{ roomNameBreadcrumb }}</b></li>
-                    <li ng-hide="hideRoomId">{{ 'room_id' | translate }}: <b>{{ roomIdBreadcrumb }}</b></li>
-                    <li ng-hide="hideStoryName">{{ 'story' | translate }}: <b>{{ storyNameBreadcrumb }}</b></li>
-                </ol>
-                <ol class="breadcrumb" ng-hide="hideRoomName">
-                    <li>url: <b>{{ roomUrl }}</b></li>
-                </ol>
-                <div class="alert alert-danger" role="alert" ng-show="connectionError">
-                    {{ connectionErrorMessage }}
-                </div>
-            </div>
+<div class="container" ng-controller="HeaderCtrl">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <h1>Remoker</h1>
+
+            <ol class="breadcrumb text-right" ng-hide="hideRoomName">
+                <li ng-hide="hideInfo">{{ 'room_id' | translate }}: <b>{{ roomId }}</b></li>
+                <li ng-hide="hideInfo">
+                    {{ 'url' | translate }}:
+                    <button class="btn btn-small btn-info" uib-popover="{{ roomUrl }}" popover-title="URL" popover-placement="bottom">
+                        {{ 'show_url' | translate }}
+                    </button>
+                </li>
+            </ol>
         </div>
+    </nav>
+    <br />
+    <br />
+
+    <div class="alert alert-danger" role="alert" ng-show="connectionError">
+        {{ connectionErrorMessage }}
     </div>
+
 </div>

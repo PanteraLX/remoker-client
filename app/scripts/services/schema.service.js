@@ -14,11 +14,11 @@ angular.module('remoker')
             return ['fibonacci', 'shirt', 'cup'];
         };
 
-        this.getCardset = function(sizingStrategy) {
+        this.getCardset = function(schema) {
             var cardSet = [];
             var rowArray = [];
             var row = 0;
-            angular.forEach(this.getArray(sizingStrategy), function(value, key) {
+            angular.forEach(this.getArray(schema), function(value, key) {
                 rowArray.push(value);
                 cardSet[row] = rowArray;
                 if(key % 3 === 2) {
@@ -29,8 +29,8 @@ angular.module('remoker')
             return cardSet;
         };
 
-        this.getArray = function(sizingStrategy) {
-            switch(sizingStrategy) {
+        this.getArray = function(schema) {
+            switch(schema) {
                 case 'shirt':
                     return shirt;
                 case 'cup':
@@ -39,5 +39,4 @@ angular.module('remoker')
                     return fibonacci;
             }
         };
-
     });

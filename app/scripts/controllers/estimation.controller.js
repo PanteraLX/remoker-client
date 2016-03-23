@@ -10,7 +10,7 @@
 angular.module('remoker')
     .controller('EstimationCtrl', function($scope, $wamp, $location, rpc, schema, user, room, story, estimation, parameters, onResolution, onNewDeveloper, onHasEstimation) {
 
-        $scope.cardSet = schema.getCardset(room.schema);
+        $scope.cardSet = schema.getArray(room.schema);
         $scope.estimation = {};
 
         var showException = function(exception) {
@@ -20,11 +20,15 @@ angular.module('remoker')
             console.log(exception);
         };
 
+        $scope.setEstimationValue = function(value) {
+            $scope.value = value;
+        };
+
         /**
          * Calls the createEstimationAction in the backend server.
          */
         $scope.createEstimation = function() {
-            estimation.value = $scope.estimation.value;
+            estimation.value = $scope.value;
             $wamp.getWampSession().call(rpc.createEstimation, parameters.getParameters())
                 .then(
                     function(response) {
