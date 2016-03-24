@@ -22,7 +22,7 @@ angular.module('remoker')
          *
          * @return string
          */
-        this.getParameters = function() {
+        this.getParameters = function () {
             parameters.user = user;
             parameters.estimation = estimation;
             parameters.story = story;

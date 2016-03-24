@@ -8,7 +8,7 @@
  * Is called to check for available stories
  */
 angular.module('remoker')
-    .service('join', function($rootScope, $location, $wamp, rpc, user, room, story, onNewStory) {
+    .service('join', function ($rootScope, $location, room, story, onNewStory) {
 
         /**
          * Checks if there is any story in the current room object.
@@ -23,13 +23,13 @@ angular.module('remoker')
          *
          * @return void
          */
-        this.story = function() {
+        this.story = function () {
             if (0 === room.stories.length) {
                 angular.element('#storyModal').modal('show');
             } else {
                 Object.assign(story, room.stories[room.stories.length - 1]);
                 story.hasEstimation = {};
-                if((typeof story.result === 'undefined') || (story.result === -1)) {
+                if ((typeof story.result === 'undefined') || (story.result === -1)) {
                     $location.path('/estimation');
                 } else {
                     $location.path('/result');

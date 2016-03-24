@@ -1,0 +1,3 @@
+{
+"create_story_desc": "Here you can define the name of the next story you want to estimate. The name can be the identifier of the story out of Jira, Redmine etc."
+}

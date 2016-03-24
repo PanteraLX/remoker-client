@@ -26,7 +26,7 @@ angular.module('remoker')
          * @param exception
          * @return void
          */
-        var showException = function(exception) {
+        var showException = function (exception) {
             $scope.creationErrorMessage = exception.desc;
             $scope.creationError = true;
             $scope.$apply();
@@ -39,7 +39,7 @@ angular.module('remoker')
          * @param value
          * @return void
          */
-        $scope.setEstimationValue = function(value) {
+        $scope.setEstimationValue = function (value) {
             $scope.value = value;
         };
 
@@ -52,26 +52,26 @@ angular.module('remoker')
          *
          * @return void
          */
-        $scope.createEstimation = function() {
+        $scope.createEstimation = function () {
             estimation.value = $scope.value;
             $wamp.getWampSession().call(rpc.createEstimation, parameters.getParameters())
                 .then(
-                    function(response) {
+                    function (response) {
                         Object.assign(estimation, JSON.parse(response[0]));
                         $wamp.publish({estimation: estimation});
                         return $wamp.getWampSession().call(rpc.getStory, parameters.getParameters());
                     },
-                    function(exception) {
+                    function (exception) {
                         showException(exception);
                     }
                 )
                 .then(
-                    function(response) {
+                    function (response) {
                         Object.assign(story, JSON.parse(response[0]));
                         $location.path('/overview');
                         $scope.$apply();
                     },
-                    function(exception) {
+                    function (exception) {
                         showException(exception);
                     }
                 );

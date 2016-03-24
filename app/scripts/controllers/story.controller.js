@@ -8,7 +8,7 @@
  * Controller of remoker
  */
 angular.module('remoker')
-    .controller('StoryCtrl', function ($scope, $cookies, $wamp, $location, user, room,
+    .controller('StoryCtrl', function ($scope, $wamp, $location, user,
                                        story, rpc, parameters, onNewDeveloper) {
         if (typeof user.id === 'undefined') {
             $location.path("/");
@@ -19,11 +19,11 @@ angular.module('remoker')
          *
          * @return void
          */
-        $scope.createStory = function() {
+        $scope.createStory = function () {
             story.name = $scope.storyName;
             $wamp.getWampSession().call(rpc.createStory, parameters.getParameters())
                 .then(
-                    function(response) {
+                    function (response) {
                         Object.assign(story, JSON.parse(response[0]));
 
                         // All developers subscribed to the remoker channel should be notified
@@ -33,7 +33,7 @@ angular.module('remoker')
                         story.hasEstimation = {};
                         $scope.$apply();
                     },
-                    function(exception) {
+                    function (exception) {
                         $scope.creationErrorMessage = exception.desc;
                         $scope.creationError = true;
                         $scope.$apply();
@@ -42,4 +42,4 @@ angular.module('remoker')
                 );
 
         };
-});
+    });

@@ -8,7 +8,7 @@
  * Controller of remoker
  */
 angular.module('remoker')
-    .controller('RoomCtrl', function($scope, $cookies, $wamp, $location, user,
+    .controller('RoomCtrl', function ($scope, $cookies, $wamp, $location, user,
                                      room, rpc, schema, parameters, join) {
         if (typeof user.id === 'undefined') {
             $location.path("/");
@@ -24,7 +24,7 @@ angular.module('remoker')
          *
          * @param schema
          */
-        $scope.setSchema = function(schema) {
+        $scope.setSchema = function (schema) {
             room.schema = schema;
         };
 
@@ -33,14 +33,14 @@ angular.module('remoker')
          *
          * @return void
          */
-        $scope.createRoom = function() {
+        $scope.createRoom = function () {
 
             // User input for room name
             room.name = $scope.roomName;
 
             $wamp.getWampSession().call(rpc.createRoom, parameters.getParameters())
                 .then(
-                    function(response) {
+                    function (response) {
                         Object.assign(room, JSON.parse(response[0]));
 
                         //
@@ -51,7 +51,7 @@ angular.module('remoker')
                         $location.path('/story');
                         $scope.$apply();
                     },
-                    function(exception) {
+                    function (exception) {
                         $scope.creationError = true;
                         $scope.creationErrorMessage = exception.desc;
                         $scope.$apply();
@@ -70,17 +70,17 @@ angular.module('remoker')
          *
          * @return void
          */
-        $scope.getRoom = function() {
+        $scope.getRoom = function () {
             room.id = $scope.roomId;
             $wamp.getWampSession().call(rpc.getRoom, parameters.getParameters())
                 .then(
-                    function(response) {
+                    function (response) {
                         Object.assign(room, JSON.parse(response[0]));
                         $wamp.subscribe(room.id);
                         $wamp.publish({user: user});
                         join.story();
                     },
-                    function(exception) {
+                    function (exception) {
                         $scope.joinError = true;
                         $scope.joinErrorMessage = exception.desc;
                         $scope.$apply();

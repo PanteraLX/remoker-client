@@ -8,7 +8,7 @@
  * Service in remoker
  */
 angular.module('remoker')
-    .service('onResolution', function($rootScope, $wamp, $location, parameters, rpc, story) {
+    .service('onResolution', function ($rootScope, $wamp, $location, parameters, rpc, story) {
 
         /**
          * The resolution event is fired, when the master wants to leave the overview view
@@ -18,18 +18,17 @@ angular.module('remoker')
          *
          * @return void
          */
-        $rootScope.$on('resolution', function() {
-                $wamp.getWampSession().call(rpc.getStory, parameters.getParameters())
-                    .then(
-                        function(response) {
-                            Object.assign(story, JSON.parse(response[0]));
-                            $location.path('/result');
-                            $rootScope.$apply();
-                        },
-                        function(exception) {
-                            console.log(exception);
-                        }
-                    );
-            }
-        );
+        $rootScope.$on('resolution', function () {
+            $wamp.getWampSession().call(rpc.getStory, parameters.getParameters())
+                .then(
+                    function (response) {
+                        Object.assign(story, JSON.parse(response[0]));
+                        $location.path('/result');
+                        $rootScope.$apply();
+                    },
+                    function (exception) {
+                        console.log(exception);
+                    }
+                );
+        });
     });

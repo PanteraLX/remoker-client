@@ -15,7 +15,7 @@ angular.module('remoker')
          *
          * @return void
          */
-        var hideModal = function() {
+        var hideModal = function () {
             angular.element('#storyModal').modal('hide');
             angular.element('body').removeClass('modal-open');
             angular.element('.modal-backdrop').remove();
@@ -26,7 +26,7 @@ angular.module('remoker')
          *
          * @return void
          */
-        $rootScope.$on('newStory', function(event, newStory) {
+        $rootScope.$on('newStory', function (event, newStory) {
             hideModal();
             if (user.is_master) {
                 $location.path('/overview');

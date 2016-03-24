@@ -20,10 +20,10 @@ angular.module('remoker')
          * The route /room/{roomId} routes directly to the user view (and controller).
          * The corresponding room object will be loaded via an async rpc in the load service
          */
-        if(typeof ($routeParams.roomId) !== 'undefined') {
+        if (typeof $routeParams.roomId !== 'undefined') {
             room.id = $routeParams.roomId;
             load.room();
-            $rootScope.$on('room_exception', function(event, exception) {
+            $rootScope.$on('room_exception', function (event, exception) {
                 console.log(exception);
                 $scope.loadErrorMessage = 'invalid_room_id';
                 $scope.loadError = true;
@@ -37,12 +37,12 @@ angular.module('remoker')
          * load.user() fetches the corresponding user name to user id, so that the user has the choice between
          * a new user object or the existing one.
          */
-        if(typeof $cookies.get('user') !== 'undefined') {
+        if (typeof $cookies.get('user') !== 'undefined') {
             $scope.hideUseUser = false;
             user.id = $cookies.get('user');
             load.user();
             user.id = '';
-            $rootScope.$on('user_loaded', function(event, userName) {
+            $rootScope.$on('user_loaded', function (event, userName) {
                 $scope.usedUserName = userName;
             });
         }
@@ -55,14 +55,14 @@ angular.module('remoker')
          *
          * @return void
          */
-        $scope.createUser = function(userName) {
+        $scope.createUser = function (userName) {
             // If no userName is set, the user will be called John Doe from now on.
-            user.name = typeof userName === 'undefined' || userName === '' ? 'John Doe' : userName;
+            user.name = userName === 'undefined' || userName === '' ? 'John Doe' : userName;
 
             $wamp.getWampSession().call(rpc.createUser, parameters.getParameters())
                 .then(
                     // Is called when the promise is fulfilled
-                    function(response) {
+                    function (response) {
                         // the response is a stringified user object stored in an array
                         // and should be assigned to the Angular user value
                         Object.assign(user, JSON.parse(response[0]));
@@ -70,7 +70,7 @@ angular.module('remoker')
 
                         // If there is already a room loaded with load.room() the user will be added to this room,
                         // otherwise he will be transferred to the room view
-                        if(typeof room.id === 'undefined') {
+                        if (typeof room.id === 'undefined') {
                             $location.path('/room');
                             $scope.$apply();
                         } else {
@@ -78,7 +78,7 @@ angular.module('remoker')
                         }
                     },
                     // Is called when the backend has thrown an exception
-                    function(exception) {
+                    function (exception) {
                         $scope.creationError = true;
                         $scope.creationErrorMessage = exception.desc;
                         $scope.$apply();

@@ -27,7 +27,7 @@ angular.module('remoker')
          *
          * @return void
          */
-        $scope.newStory = function() {
+        $scope.newStory = function () {
             story = {};
             estimation = {};
             $location.path("/story");
@@ -39,16 +39,16 @@ angular.module('remoker')
          *
          * @return void
          */
-        $scope.reEstimate = function() {
+        $scope.reEstimate = function () {
             $wamp.getWampSession().call(rpc.deleteEstimations, parameters.getParameters())
                 .then(
-                    function(response) {
+                    function (response) {
                         Object.assign(story, JSON.parse(response[0]));
                         $wamp.publish({reestimation: true});
                     },
-                    function(exception) {
+                    function (exception) {
                         console.log(exception);
                     }
                 );
         };
-});
+    });

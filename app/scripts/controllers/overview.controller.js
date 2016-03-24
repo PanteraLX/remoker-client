@@ -9,7 +9,7 @@
  */
 angular.module('remoker')
     .controller('OverviewCtrl', function($scope, $wamp, $location, rpc, user, estimation, story, room, schema,
-                                         parameters, onResolution, onHasEstimation) {
+                                         parameters, median, onResolution, onHasEstimation) {
         if (typeof user.id === 'undefined') {
             $location.path("/");
         }
@@ -22,6 +22,7 @@ angular.module('remoker')
         $scope.developers = room.developers;
         $scope.storyName = story.name;
         $scope.hasEstimation = story.hasEstimation;
+        $scope.sizingArray = schema.getArray(room.schema);
 
         /**
          * Fills an array with all the developers, which have published their estimation object
@@ -29,14 +30,14 @@ angular.module('remoker')
          * @return void
          * @param estimation
          */
-        var fillHasEstimation = function(estimation) {
+        var fillHasEstimation = function (estimation) {
             console.log(estimation);
-            var id = estimation.developer.id;
-            var developer = $scope.developers.filter(
-                function(e){
-                    return e.id === id;
-                }
-            );
+            var id = estimation.developer.id,
+                developer = $scope.developers.filter(
+                    function (e) {
+                        return e.id === id;
+                    }
+                );
             $scope.hasEstimation[developer[0].id] = true;
             $wamp.publish({hasEstimation: $scope.hasEstimation});
         };
@@ -46,7 +47,7 @@ angular.module('remoker')
          *
          * @return void
          */
-        $scope.$on('newEstimation', function(event, estimation) {
+        $scope.$on('newEstimation', function (event, estimation) {
             console.log(estimation);
             fillHasEstimation(estimation);
             $scope.estimations.push(estimation);
@@ -65,26 +66,26 @@ angular.module('remoker')
          *
          * @return void
          */
-        $scope.resolveStory = function() {
+        $scope.resolveStory = function () {
             $wamp.getWampSession().call(rpc.getStory, parameters.getParameters())
                 .then(
-                    function(response) {
+                    function (response) {
                         Object.assign(story, JSON.parse(response[0]));
-                        story.result = story.getMedian($scope.sizingArray = schema.getArray(room.schema));
+                        story.result = median.calculate($scope.estimations);
                         return $wamp.getWampSession().call(rpc.setResult, parameters.getParameters());
                     },
-                    function(exception) {
+                    function (exception) {
                         $scope.creationErrorMessage = exception.desc;
                         $scope.creationError = true;
                         $scope.$apply();
                     }
                 )
                 .then(
-                    function(response) {
+                    function (response) {
                         Object.assign(story, JSON.parse(response[0]));
                         $wamp.publish({resolution: true});
                     },
-                    function(exception) {
+                    function (exception) {
                         $scope.creationErrorMessage = exception.desc;
                         $scope.creationError = true;
                         $scope.$apply();

@@ -8,7 +8,7 @@
  * WAMP service for handling the WAMP session and Pub/Sub messaging
  */
 angular.module('remoker')
-    .service('$wamp', function($rootScope, $location, story, room) {
+    .service('$wamp', function($rootScope, $location, room) {
 
         var wampSession;
 
@@ -18,14 +18,14 @@ angular.module('remoker')
          * @param session
          * @returns {*}
          */
-        this.setWampSession = function(session) {
+        this.setWampSession = function (session) {
             wampSession = session;
             return wampSession;
         };
         /**
          * @returns {*}
          */
-        this.getWampSession = function() {
+        this.getWampSession = function () {
             return wampSession;
         };
 
@@ -36,7 +36,7 @@ angular.module('remoker')
          * Form now on, all send events in that channel will call the anonymous callback function.
          * That callback function itself will call a method to diverse between different payloads.
          */
-        this.subscribe = function(id) {
+        this.subscribe = function (id) {
             wampSession.subscribe("remoker/" + id, function(uri, payload) {
                 handlePublish(payload);
             });
@@ -45,7 +45,7 @@ angular.module('remoker')
         /**
          * Published an event/message to the remoker channel
          */
-        this.publish = function(message) {
+        this.publish = function (message) {
             wampSession.publish("remoker/" + room.id, message);
         };
 
@@ -56,13 +56,13 @@ angular.module('remoker')
          *
          * @param payload
          */
-        var handlePublish = function(payload) {
+        var handlePublish = function (payload) {
             if (typeof payload.story !== 'undefined') {
                 $rootScope.$broadcast('newStory', payload.story);
             } else if (typeof payload.estimation !== 'undefined') {
                 $rootScope.$broadcast('newEstimation', payload.estimation);
             } else if (typeof payload.user !== 'undefined') {
-                    $rootScope.$broadcast('newDeveloper', payload.user);
+                $rootScope.$broadcast('newDeveloper', payload.user);
             } else if (typeof payload.hasEstimation !== 'undefined') {
                 $rootScope.$broadcast('hasEstimation', payload.hasEstimation);
             } else if (payload.resolution) {

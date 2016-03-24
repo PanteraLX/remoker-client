@@ -8,7 +8,7 @@
  * Service in remoker
  */
 angular.module('remoker')
-    .service('onHasEstimation', function($rootScope, story) {
+    .service('onHasEstimation', function ($rootScope, story) {
 
         /**
          * The 'hasEstimation' is fired when a new developer has send an estimation
@@ -16,7 +16,7 @@ angular.module('remoker')
          *
          * @return void
          */
-        $rootScope.$on('hasEstimation', function(event, hasEstimation) {
+        $rootScope.$on('hasEstimation', function (event, hasEstimation) {
             Object.assign(story.hasEstimation, hasEstimation);
             $rootScope.$apply();
         });

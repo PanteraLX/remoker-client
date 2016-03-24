@@ -8,7 +8,7 @@
  * Controller of remoker
  */
 angular.module('remoker')
-    .controller('HeaderCtrl', function($scope, room) {
+    .controller('HeaderCtrl', function ($scope, room) {
         $scope.roomId = room.id;
         $scope.roomUrl = window.location.origin + '/#/room/' + room.id;
         $scope.hideInfo = (typeof $scope.roomId === 'undefined');
