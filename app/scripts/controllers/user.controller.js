@@ -11,6 +11,8 @@ angular.module('remoker')
     .controller('UserCtrl', function($scope, $cookies, $routeParams, $wamp, $location, $rootScope,
                                      user, rpc, room, parameters, join, add, load) {
 
+        $scope.hideUseUser = true;
+
         /**
          * This part will be executed if a Developer wants to join a room with a given url.
          * e.g. http://remoker.test/room/123abc
@@ -31,7 +33,9 @@ angular.module('remoker')
         }
 
         /**
-         *
+         * This part will be executed when a cookie with a userID is set.
+         * load.user() fetches the corresponding user name to user id, so that the user has the choice between
+         * a new user object or the existing one.
          */
         if(typeof $cookies.get('user') !== 'undefined') {
             $scope.hideUseUser = false;

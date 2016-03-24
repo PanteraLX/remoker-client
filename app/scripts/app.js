@@ -142,6 +142,7 @@ angular
             'missing_schema': 'Bitte geben Sie ein Schätzschema an',
             'missing_storyname': 'Bitte geben Sie einen Storynamen an',
             'missing_estimationvalue': 'Bitte wählen Sie einen Schätzwert',
+            'document_not_found': 'Das angeforderte Dokument konnte nicht gefunden werden',
             'name_spec': 'max. 20 alphanumerische Zeichen oder [/-]',
             'id_spec': '6 alphanumerische Zeichen',
             'no_story': 'Keine Story erfasst',
