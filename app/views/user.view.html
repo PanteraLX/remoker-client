@@ -1,5 +1,6 @@
 <div class="section background-color body">
     <div ng-include="'views/header.view.html'"></div>
+
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -22,8 +23,14 @@
                         <div class="alert alert-danger" role="alert" ng-show="creationError">
                             {{ creationErrorMessage | translate }}
                         </div>
-                        <button type="submit" class="btn btn-info" ng-click="createUser()">{{ 'create_user_button' | translate }}</button>
+                        <button type="submit" class="btn btn-info" ng-click="createUser(userName)">{{ 'create_user_button' | translate }}</button>
                     </form>
+                    <div ng-hide="hideUseUser">
+                        <h3 class="text-center">{{ 'use_user_heading' | translate }}</h3>
+                        <p>{{ 'use_user_desc' | translate }}</p>
+                        <br />
+                        <button type="submit" class="btn btn-info" ng-click="createUser(usedUserName)">{{ usedUserName }}</button>
+                    </div>
                 </div>
             </div>
         </div>

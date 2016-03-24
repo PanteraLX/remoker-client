@@ -10,25 +10,21 @@
 angular.module('remoker')
     .service('schema', function(fibonacci, shirt, cup) {
 
+        /**
+         * Sends back all the possible schemas, so that the master can select on in the room view
+         *
+         * @returns {string[]}
+         */
         this.getSchemas = function() {
             return ['fibonacci', 'shirt', 'cup'];
         };
 
-        this.getCardset = function(schema) {
-            var cardSet = [];
-            var rowArray = [];
-            var row = 0;
-            angular.forEach(this.getArray(schema), function(value, key) {
-                rowArray.push(value);
-                cardSet[row] = rowArray;
-                if(key % 3 === 2) {
-                    rowArray = [];
-                    row++;
-                }
-            });
-            return cardSet;
-        };
-
+        /**
+         * Returns an object with all the possible values of the chosen schema
+         *
+         * @param schema
+         * @returns {*}
+         */
         this.getArray = function(schema) {
             switch(schema) {
                 case 'shirt':

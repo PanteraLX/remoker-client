@@ -9,10 +9,14 @@
  */
 angular.module('remoker')
     .service('onNewDeveloper', function($rootScope, room) {
+
+        /**
+         * The newDeveloper event is fired when a new developer joined the room
+         *
+         * @return void
+         */
         $rootScope.$on('newDeveloper', function(event, developer) {
-            var result = room.developers.filter(function(e){ return e.short_id === developer.short_id; });
             room.developers.push(developer);
             $rootScope.$apply();
         });
-
     });

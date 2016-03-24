@@ -7,10 +7,10 @@
                 <a class="nav-link" >{{ 'room_id' | translate }}: <b>{{ roomId }}</b></a>
             </li>
             <li class="nav-item" ng-hide="hideInfo">
-                <a class="nav-link">{{ 'url' | translate }}:
-                    <b ng-hide="hideInfo" uib-popover="{{ roomUrl }}" popover-title="URL" popover-placement="bottom-right">
-                        {{ 'show_url' | translate }}
-                    </b>
+                <a class="url-btn" ng-hide="hideInfo" uib-popover="{{ roomUrl }}"
+                   popover-title="URL" popover-placement="bottom-right"
+                >
+                    <b>{{ 'url' | translate }}</b>
                 </a>
             </li>
         </ul>

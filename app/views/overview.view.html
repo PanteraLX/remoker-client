@@ -4,15 +4,13 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="text-center well">
-                    <p class="text-center">On this page all, developers are shown which have already send an estimation
-                        for the story.</p>
-                    <h3 class="text-center">{{ 'story' | translate }}</h3>
-                    <p class="text-center">{{ storyName }}</p>
+                    <h2 class="text-center">{{ storyName }}</h2>
                     <h3 class="text-center">{{ 'overview' | translate }}</h3>
+                    <p>{{ 'overview_desc' | translate:'{storyname: storyName}' }}</p>
                     <table class="table table-striped table-responsive">
                         <tbody>
                         <tr ng-repeat="(key, developer) in developers"
-                            ng-class="{'success' : hasEstimation[developer.short_id] === true }">
+                            ng-class="{'success' : hasEstimation[developer.id] === true }">
                             <td>{{ key + 1 }}</td>
                             <td>{{ developer.name }}</td>
                             <td>{{ developer.created_at.sec * 1000 | date:'dd.MM.yyyy HH:mm' }}</td>

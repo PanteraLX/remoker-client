@@ -10,11 +10,24 @@
 angular.module('remoker')
     .service('onNewStory', function($rootScope, $location, story, user) {
 
-        $rootScope.$on('newStory', function(event, newStory) {
+        /**
+         * The current modal should be hidden
+         *
+         * @return void
+         */
+        var hideModal = function() {
             angular.element('#storyModal').modal('hide');
-            $('body').removeClass('modal-open');
-            $('.modal-backdrop').remove();
-            console.log(story.hasEstimation);
+            angular.element('body').removeClass('modal-open');
+            angular.element('.modal-backdrop').remove();
+        };
+
+        /**
+         * The newStory event is fired, when the master has created a new Story.
+         *
+         * @return void
+         */
+        $rootScope.$on('newStory', function(event, newStory) {
+            hideModal();
             if (user.is_master) {
                 $location.path('/overview');
             } else {

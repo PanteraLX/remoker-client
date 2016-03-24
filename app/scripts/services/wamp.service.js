@@ -5,14 +5,16 @@
  * @name remoker.wamp
  * @description
  * # wamp
- * Service in remoker.
+ * WAMP service for handling the WAMP session and Pub/Sub messaging
  */
 angular.module('remoker')
-    .service('$wamp', function($rootScope, $location, story, room, rpc, parameters) {
+    .service('$wamp', function($rootScope, $location, story, room) {
 
         var wampSession;
 
         /**
+         * Getter and setter for the WAMP session
+         *
          * @param session
          * @returns {*}
          */
@@ -20,7 +22,6 @@ angular.module('remoker')
             wampSession = session;
             return wampSession;
         };
-
         /**
          * @returns {*}
          */
@@ -29,22 +30,29 @@ angular.module('remoker')
         };
 
         /**
-         * Subscribes to a channel
+         * Subscribes to the remoker channel.
+         * The channel is identified with the ID of the room object
+         *
+         * Form now on, all send events in that channel will call the anonymous callback function.
+         * That callback function itself will call a method to diverse between different payloads.
          */
-        this.subscribe = function(shortId) {
-            wampSession.subscribe("remoker/" + shortId, function(uri, payload) {
+        this.subscribe = function(id) {
+            wampSession.subscribe("remoker/" + id, function(uri, payload) {
                 handlePublish(payload);
             });
         };
 
         /**
-         * Subscribes to a channel
+         * Published an event/message to the remoker channel
          */
         this.publish = function(message) {
-            wampSession.publish("remoker/" + room.short_id, message);
+            wampSession.publish("remoker/" + room.id, message);
         };
 
         /**
+         * There are six possible publish events.
+         *
+         * This handler sends Angular broadcasts, which will be registered by different broadcast listeners
          *
          * @param payload
          */

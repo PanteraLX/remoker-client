@@ -5,16 +5,23 @@
  * @name remoker.parameters
  * @description
  * # parameters
- * Value in remoker
+ * Service in remoker
  */
 angular.module('remoker')
     .service('parameters', function(estimation, story, room, user) {
+
+        // Assignment
         var parameters = {};
         parameters.user = {};
         parameters.estimation = {};
         parameters.story = {};
         parameters.room = {};
 
+        /**
+         * Creates a JSON-string parameter
+         *
+         * @return string
+         */
         this.getParameters = function() {
             parameters.user = user;
             parameters.estimation = estimation;

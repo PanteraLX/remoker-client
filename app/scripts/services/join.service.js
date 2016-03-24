@@ -5,13 +5,25 @@
  * @name remoker.joinroom
  * @description
  * # joinroom
- * Service in remoker
+ * Is called to check for available stories
  */
 angular.module('remoker')
-    .service('join', function($rootScope, $location, $wamp, rpc, user, room, story, estimation, parameters, onNewStory) {
+    .service('join', function($rootScope, $location, $wamp, rpc, user, room, story, onNewStory) {
 
+        /**
+         * Checks if there is any story in the current room object.
+         *
+         * 1. If there is no story available, a model will pop up and the developer will be transferred
+         *    when the master created a story
+         *
+         * 2. If there is a story available, the story object of the room will be extracted to a separate object
+         *    and the developer will be transferred to a different location.
+         *    If the developer joins the story after its resolution, he will be forwarded directly to the result view.
+         *    Otherwise he will have the possibility to create an estimation in the estimation view
+         *
+         * @return void
+         */
         this.story = function() {
-            console.log('helloooooo');
             if (0 === room.stories.length) {
                 angular.element('#storyModal').modal('show');
             } else {
@@ -26,18 +38,5 @@ angular.module('remoker')
             }
         };
 
-        this.room = function() {
-            $wamp.getWampSession().call(rpc.getRoom, parameters.getParameters())
-                .then(
-                    function(response) {
-                        Object.assign(room, JSON.parse(response[0]));
-                    },
-                    function(exception) {
-                        console.log(exception);
-                        $scope.creationErrorMessage = exception.desc;
-                        $scope.creationError = true;
-                        $scope.$apply();
-                    }
-                );
-        };
+
     });

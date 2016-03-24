@@ -5,7 +5,7 @@
  * @name remoker.rpc
  * @description
  * # rpc
- * Constant in remoker.
+ * Constants for all RP-calls url
  */
 angular.module('remoker').constant('rpc', {
     createUser: "userRPC/create_user_action",
