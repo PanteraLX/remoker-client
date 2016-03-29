@@ -48,6 +48,21 @@ angular.module('remoker')
         }
 
         /**
+         * Sets a cookie with key 'user' and the value of the current userId
+         * The expiration date is in a half year from now
+         *
+         * @return void
+         */
+        var setCookie = function (userId) {
+            var now = new Date(),
+                exp = new Date(now.getFullYear(), now.getMonth() + 6, now.getDate());
+            $cookies.put('user', userId, {
+                expires: exp
+            });
+
+        };
+
+        /**
          * Calls the createUserAction in the backend server.
          *
          * This is the first time in this application a remote procedure is called.
@@ -66,7 +81,7 @@ angular.module('remoker')
                         // the response is a stringified user object stored in an array
                         // and should be assigned to the Angular user value
                         Object.assign(user, JSON.parse(response[0]));
-                        $cookies.put('user', user.id);
+                        setCookie(user.id);
 
                         // If there is already a room loaded with load.room() the user will be added to this room,
                         // otherwise he will be transferred to the room view

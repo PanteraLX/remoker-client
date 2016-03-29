@@ -18,6 +18,7 @@ angular.module('remoker')
         $scope.cardSet = schema.getArray(room.schema);
 
         $scope.estimation = {};
+        $scope.storyName = story.name;
 
         /**
          * Since there are two promises to fulfill,

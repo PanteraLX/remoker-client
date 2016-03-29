@@ -42,11 +42,8 @@ angular.module('remoker')
                 .then(
                     function (response) {
                         Object.assign(room, JSON.parse(response[0]));
-
-                        //
                         Object.assign(user, room.master);
 
-                        $cookies.put('room', room.id);
                         $wamp.subscribe(room.id);
                         $location.path('/story');
                         $scope.$apply();

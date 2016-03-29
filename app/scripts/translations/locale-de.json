@@ -16,6 +16,7 @@
   "developer_name": "Entwicklername",
   "estimation_time": "Geschätzt am",
   "join_time": "Beigetreten am",
+  "welcome": "Willkommen",
 
   "remoker_intro": "Remoker ist ein einfaches Tool um User Storys in einem Scrum-Team zu schätzen. Bitte erstellen sie einen User, um eine neue Schätzrunde zu eröffnen oder an einer bestehenden teilzunehmen.",
 
@@ -29,7 +30,7 @@
   "create_estimation_heading": "Neue Schätzung abgeben",
   "create_estimation_desc": "Hier können Sie den gewünschten Schätzwert auswählen.",
   "use_user_heading": "Bestehenden User benutzen",
-  "use_user_desc": "In den Cookies wurde bereits ein User gefunden. Wenn sie diesen wieder benutzen wollen, klicken sie auf den Usernamen.",
+  "use_user_desc": "In den Cookies wurde bereits ein User gefunden. Wenn Sie diesen wieder benutzen wollen, klicken Sie auf den Usernamen.",
   "join_room_heading": "Bestehendem Raum beitreten",
   "join_room_desc": "Wenn sie ein reguläres Mitglied Ihres Scrum-Teams sind und Ihr Scrum-Master bereits einen Schätzraum erstellt hat, können Sie hier mit Hilfe der ID des Raumes teilnehmen.",
   "overview_desc": "Hier sehen sie alle Entwickler, welche sich im aktuellen Raum befinden. Entwickler, welche bereits ihre Schätzung abgegeben haben, werden grün markiert.",

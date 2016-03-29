@@ -8,7 +8,7 @@
  * Service in remoker
  */
 angular.module('remoker')
-    .service('onNewStory', function($rootScope, $location, story, user) {
+    .service('onNewStory', function($rootScope, $location, $wamp, story, user) {
 
         /**
          * The current modal should be hidden

@@ -31,7 +31,6 @@ angular.module('remoker')
          * @param estimation
          */
         var fillHasEstimation = function (estimation) {
-            console.log(estimation);
             var id = estimation.developer.id,
                 developer = $scope.developers.filter(
                     function (e) {
@@ -48,7 +47,6 @@ angular.module('remoker')
          * @return void
          */
         $scope.$on('newEstimation', function (event, estimation) {
-            console.log(estimation);
             fillHasEstimation(estimation);
             $scope.estimations.push(estimation);
             $scope.$apply();

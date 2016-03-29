@@ -13,14 +13,14 @@
                             ng-class="{'success' : hasEstimation[developer.id] === true }">
                             <td>{{ key + 1 }}</td>
                             <td>{{ developer.name }}</td>
-                            <td>{{ developer.created_at.sec * 1000 | date:'dd.MM.yyyy HH:mm' }}</td>
+                            <td class="hidden-xs">{{ developer.created_at.sec * 1000 | date:'dd.MM.yyyy HH:mm' }}</td>
                         </tr>
                         </tbody>
                         <thead>
                         <tr>
                             <th>#</th>
                             <th>{{ 'developer_name' | translate }}</th>
-                            <th>{{ 'join_time' | translate }}</th>
+                            <th class="hidden-xs">{{ 'join_time' | translate }}</th>
                         </tr>
                         </thead>
                     </table>
