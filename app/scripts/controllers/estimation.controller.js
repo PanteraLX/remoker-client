@@ -77,4 +77,6 @@ angular.module('remoker')
                     }
                 );
         };
+
+        angular.element('create-estimation-heading').textfill();
     });

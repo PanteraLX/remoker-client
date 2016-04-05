@@ -14,6 +14,7 @@
     "angular-translate": "^2.10.0",
     "angular-translate-loader-static-files": "^2.11.0",
     "angular-wamp": "~0.1.8",
+    "jquery-textfill": "^0.6.0",
     "gos-websocket-client": ""
   },
   "devDependencies": {
