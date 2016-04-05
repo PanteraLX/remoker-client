@@ -72,7 +72,7 @@ angular.module('remoker')
          */
         $scope.createUser = function (userName) {
             // If no userName is set, the user will be called John Doe from now on.
-            user.name = userName === 'undefined' || userName === '' ? 'John Doe' : userName;
+            user.name = typeof userName === 'undefined' || userName === '' ? 'John Doe' : userName;
 
             $wamp.getWampSession().call(rpc.createUser, parameters.getParameters())
                 .then(
