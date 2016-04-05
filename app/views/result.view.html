@@ -9,7 +9,7 @@
                     <div class="btn btn-info"><h1>{{ sizingArray[storyPoints].value }}</h1></div>
                     <h3 class="text-center">{{ 'overview' | translate }}</h3>
                     <br/>
-                    <table class="table table-striped table-responsive">
+                    <table class="table table-striped table-responsive" st-table="estimations">
                         <tbody>
                         <tr ng-repeat="(key, estimation) in estimations"
                             ng-class="{'success' : sizingArray[estimation.value].value ===  sizingArray[storyPoints].value,
@@ -23,9 +23,9 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>{{ 'developer_name' | translate }}</th>
-                            <th>{{ 'estimation_value' | translate }}</th>
-                            <th class="hidden-xs">{{ 'estimation_time' | translate }}</th>
+                            <th st-sort="name">{{ 'developer_name' | translate }}</th>
+                            <th st-sort="value" st-sort-default="true">{{ 'estimation_value' | translate }}</th>
+                            <th st-sort="time" class="hidden-xs">{{ 'estimation_time' | translate }}</th>
                         </tr>
                         </thead>
                     </table>
