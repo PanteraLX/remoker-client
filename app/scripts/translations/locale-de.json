@@ -56,6 +56,7 @@
   "not_found_desc": "Die angeforderte Seite konnte nicht gefunden werden. Stellen Sie sicher, dass die Seite existiert und keine Tippfehler in der Url sind.",
 
   "name_spec": "max. 20 alphanumerische Zeichen oder [/-]",
+  "story_name_spec": "max. 255 alphanumerische Zeichen oder [/-]",
   "id_spec": "6 alphanumerische Zeichen",
 
   "no_story": "Keine Story erfasst",
